@@ -1,5 +1,9 @@
 # MoneyDisburserApplication
 
+Single Page Application developed with angular and typescript
+Frontend UI interaction with AWS + Endpoints + Payloads in docx file.
+Pre-requisites npm,ng,angular cli installed.
+
 Developed with spring boot microservice architecture.
 Microservice architecture allows you to maximize deployment velocity and application reliability by helping you move at the speed of the market.
 Frontend UI interaction with AWS + Endpoints in docx file.
