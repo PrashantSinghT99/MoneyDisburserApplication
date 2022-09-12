@@ -1,0 +1,68 @@
+<div class="container-fluid p-0">
+    <div class="container-fluid header">
+    <img src="assets/disburse_bank.png" height="80px">
+    <p class="heading-text">{{data.pensionAmount | currency:'INR':'symbol'}}</p>
+    </div>
+    <div class="container-fluid content">
+    <div class="row">
+    <div class="pension-details-right">
+    <div class="row left-container">
+        <div class="col-sm-12">
+            <p style="font-size:14px; margin:0px">PENSION OF:</p>
+            <p class="pension-detail-heading">{{data.name}}</p>
+        </div>
+        <div class="col-sm-12 plan-type">
+            <div class="field-label">PENSION TYPE :</div>
+            <div class="field-value">{{data.pensionType}}</div>
+        </div>
+        <div class="col-sm-12 plan-type">
+            <div class="field-label"> DATE OF BIRTH :</div>
+            <div class="field-value">{{data.dateOfBirth}}
+            <img src="assets/calendar.png" class="calendar-logo">
+            </div>
+        </div>
+        <div class="col-sm-12 plan-type">
+            <div class="field-label"> AADHAR NUMBER:</div>
+            <div class="field-value">{{aadhar}}</div>
+        </div>
+        <div class="col-sm-12 plan-type">
+            <div class="field-label"> PAN NUMBER :</div>
+            <div class="field-value">{{data.pan}}</div>
+        </div>
+    </div>
+    </div>
+    <div class="right-container pension-details-left">
+        <p class="m-0">YOUR PENSION AMOUNT : </p>
+        <p class="m-0 h1">{{data.pensionAmount}} &#x20B9;</p>
+        <p  class="mt-5">You can disburse in one click.</p>
+    </div>
+    </div>
+    </div>
+    <div class="container-fluid footer">
+        <button class="button-submit" (click)="doDisburse()">Disburse</button>
+    </div>
+    </div>
+<div class="disburse-status" *ngIf=toggler>
+    <div class="disburse-container" *ngIf=loader>
+        <img src="assets/loading.gif">
+        <p class="text-info h4" style="text-align: center;">Processing Disburse Request</p>
+    </div>
+    <div class="disburse-container" *ngIf="!loader && disburse" >
+        <p class="text-success h1 msg-heading">CONGRATULATIONS !</p>
+        <p class="text-info" style="text-align: center;">Amount Disbursed to your bank account</p>
+        <div>
+        <button class="btn btn-danger" (click)="toggler=false">Back</button>
+        </div>
+    </div>
+    <div class="disburse-container" *ngIf="!loader && !disburse">
+        <p class="text-danger h1 msg-heading">Error Occured</p>
+        <p class="text-info" style="text-align: center;">Server Down !</p>
+        <div>
+        <button class="btn btn-danger" (click)="toggler=false">Back</button>
+        </div>
+    </div>
+</div>
+<div class="loader" *ngIf="authFailed">
+    <h3 class="text-warning msg-heading">Session is TimedOut !</h3>
+    <p class="text-info">You will be redirected back to login</p>
+  </div>
